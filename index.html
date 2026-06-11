@@ -7,22 +7,45 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15px}
+.filter-bar{background:#eaf3ff;border:1px solid #b5d4f4;border-radius:8px;padding:14px 16px;margin-bottom:22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;max-width:1100px;margin-left:auto;margin-right:auto}
+.filter-bar input[type=text]{flex:1;min-width:180px;border:1px solid #b5d4f4;border-radius:5px;padding:7px 10px;font-size:13px;font-family:Arial,sans-serif;color:#222}
+.filter-bar input[type=text]:focus{outline:2px solid #2b4a7a;border-color:#2b4a7a}
+.filter-bar select{border:1px solid #b5d4f4;border-radius:5px;padding:7px 10px;font-size:13px;font-family:Arial,sans-serif;color:#222;background:#fff;cursor:pointer}
+.filter-bar .reset-btn{background:#2b4a7a;color:#fff;border:none;border-radius:5px;padding:7px 14px;font-size:13px;font-weight:600;cursor:pointer}
+.filter-bar .reset-btn:hover{background:#1e3661}
+.no-results{text-align:center;color:#888;font-size:14px;padding:30px 0;display:none;max-width:1100px;margin:0 auto}
+.month-block-pub{margin-bottom:35px}
+.card-pub{display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;}
+.card-pub img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;min-width:0!important;object-fit:cover!important;position:absolute!important;top:0!important;left:0!important;margin:0!important;padding:0!important;border:none!important;}
+.card-pub .thumb-wrap{width:100%;padding-top:100%;position:relative;overflow:hidden;display:block;line-height:0;font-size:0;}
 </style>
 </head>
 <body>
+
+<div class="filter-bar">
+  <input type="text" id="filterSearch" placeholder="🔍 Rechercher par titre ou section…" oninput="applyFilters()">
+  <select id="filterMois" onchange="applyFilters()">
+    <option value="">📅 Tous les mois</option>
+    <option value="Janvier 2026">Janvier 2026</option><option value="Mars 2026">Mars 2026</option><option value="Avril 2026">Avril 2026</option><option value="Mai 2026">Mai 2026</option><option value="Juin 2026">Juin 2026</option><option value="Septembre 2026">Septembre 2026</option><option value="Octobre 2026">Octobre 2026</option><option value="Novembre 2026">Novembre 2026</option><option value="Décembre 2026">Décembre 2026</option>
+  </select>
+  <select id="filterSection" onchange="applyFilters()">
+    <option value="">🏷 Toutes les sections</option>
+    <option value="Addictions">Addictions</option><option value="AFPBN">AFPBN</option><option value="Epigenopsy">Epigenopsy</option><option value="FIND">FIND</option><option value="Médecine Psychédélique">Médecine Psychédélique</option><option value="Médecine Psychosomatique">Médecine Psychosomatique</option><option value="Neuropsychiatrie">Neuropsychiatrie</option><option value="NPP">NPP</option><option value="Psychiatrie Légale">Psychiatrie Légale</option><option value="SECS">SECS</option><option value="SoPsy">SoPsy</option><option value="STEP">STEP</option><option value="TDAH">TDAH</option>
+  </select>
+  <button class="reset-btn" onclick="resetFilters()">Afficher tout</button>
+</div>
+
 <!-- CALENDRIER WEBINARS AFPBN 2026 -->
 <div style="max-width:1100px;margin:0 auto;padding:20px 15px;font-family:Arial,sans-serif;color:#2c3e50;">
 
 <p style="text-align:center;color:#888;font-size:14px;margin-bottom:10px;">Cliquez sur une vignette pour accéder à l'inscription ou au replay</p>
 <p style="font-size:13px;margin-bottom:25px;"><strong>Légende :</strong>&nbsp; <span style="background:#c0392b;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:bold;">▶ REPLAY</span>&nbsp; <span style="background:#27ae60;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:bold;">✍ INSCRIPTION</span>&nbsp; <span style="background:#7f8c8d;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:bold;">📅 À VENIR</span></p>
 
-<!-- ===== JANVIER 2026 ===== -->
-<div style="margin-bottom:35px;">
-<div style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Janvier 2026</div>
-<div style="font-size:0;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
-
-<a href="https://www.afpbn.org/media/webinar-de-la-section-psychiatrie-legale-de-lafpbn-les-3h-heboidophrenie/" target="_blank" style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
-<div style="width:100%;padding-top:100%;position:relative;overflow:hidden;"><img src="https://www.afpbn.org/wp-content/uploads/2026/01/Vignette-replay-1024x1024.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"></div>
+<div class="month-block-pub" style="margin-bottom:35px;">
+<div class="month-header-pub" style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Janvier 2026</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
+<a href="https://www.afpbn.org/media/webinar-de-la-section-psychiatrie-legale-de-lafpbn-les-3h-heboidophrenie/" target="_blank" class="card-pub" data-titre="Les 3 H : Heboïdophrénie" data-section="Section Psychiatrie Légale" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
+<div class="thumb-wrap" style="width:100%;padding-top:100%;position:relative;overflow:hidden;line-height:0;font-size:0;display:block;"><img src="https://www.afpbn.org/wp-content/uploads/2026/01/Vignette-replay-1024x1024.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none;border:none;margin:0;padding:0;"></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#c0392b;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">▶ REPLAY</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">26 janv. 2026</div>
@@ -30,26 +53,22 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Les 3 H : Heboïdophrénie</div>
 </div>
 </a>
-
-<a href="https://www.afpbn.org/media/replay-webinar-section-psychosomatique-neuropsychiatrie-troubles-neurologiques-fonctionnels-regards-franco-suisses/" target="_blank" style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
-<div style="width:100%;padding-top:100%;position:relative;overflow:hidden;"><img src="https://www.afpbn.org/wp-content/uploads/2026/01/Vignette-replay-2-1024x1024.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"></div>
+<a href="https://www.afpbn.org/media/replay-webinar-section-psychosomatique-neuropsychiatrie-troubles-neurologiques-fonctionnels-regards-franco-suisses/" target="_blank" class="card-pub" data-titre="Troubles neurologiques fonctionnels : regards franco-suisses" data-section="Sections Médecine Psychosomatique &amp; Neuropsychiatrie" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
+<div class="thumb-wrap" style="width:100%;padding-top:100%;position:relative;overflow:hidden;line-height:0;font-size:0;display:block;"><img src="https://www.afpbn.org/wp-content/uploads/2026/01/Vignette-replay-2-1024x1024.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none;border:none;margin:0;padding:0;"></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#c0392b;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">▶ REPLAY</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">29 janv. 2026</div>
-<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections Médecine Psychosomatique &amp; Neuropsychiatrie</div>
+<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections Médecine Psychosomatique & Neuropsychiatrie</div>
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Troubles neurologiques fonctionnels : regards franco-suisses</div>
 </div>
 </a>
-
 </div></div>
 
-<!-- ===== MARS 2026 ===== -->
-<div style="margin-bottom:35px;">
-<div style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Mars 2026</div>
-<div style="font-size:0;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
-
-<a href="https://www.afpbn.org/media/replay-webinar-de-la-section-medecine-psychedelique-psychedeliques-et-psychose-du-modele-pharmacologique-au-potentiel-therapeutique/" target="_blank" style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
-<div style="width:100%;padding-top:100%;position:relative;overflow:hidden;"><img src="https://www.afpbn.org/wp-content/uploads/2026/03/Vignette-replay-1-1024x1024.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"></div>
+<div class="month-block-pub" style="margin-bottom:35px;">
+<div class="month-header-pub" style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Mars 2026</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
+<a href="https://www.afpbn.org/media/replay-webinar-de-la-section-medecine-psychedelique-psychedeliques-et-psychose-du-modele-pharmacologique-au-potentiel-therapeutique/" target="_blank" class="card-pub" data-titre="Psychédéliques et psychose : du modèle pharmacologique au potentiel thérapeutique" data-section="Section Médecine Psychédélique" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
+<div class="thumb-wrap" style="width:100%;padding-top:100%;position:relative;overflow:hidden;line-height:0;font-size:0;display:block;"><img src="https://www.afpbn.org/wp-content/uploads/2026/03/Vignette-replay-1-1024x1024.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none;border:none;margin:0;padding:0;"></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#c0392b;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">▶ REPLAY</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">19 mars 2026</div>
@@ -57,9 +76,8 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Psychédéliques et psychose : du modèle pharmacologique au potentiel thérapeutique</div>
 </div>
 </a>
-
-<a href="https://www.afpbn.org/media/replay-webinar-de-la-section-addictions-la-clinique-des-addictions-revisitee/" target="_blank" style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
-<div style="width:100%;padding-top:100%;position:relative;overflow:hidden;"><img src="https://www.afpbn.org/wp-content/uploads/2026/03/Vignette-replay-3-1024x1024.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"></div>
+<a href="https://www.afpbn.org/media/replay-webinar-de-la-section-addictions-la-clinique-des-addictions-revisitee/" target="_blank" class="card-pub" data-titre="La clinique des addictions revisitée" data-section="Section Addictions" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
+<div class="thumb-wrap" style="width:100%;padding-top:100%;position:relative;overflow:hidden;line-height:0;font-size:0;display:block;"><img src="https://www.afpbn.org/wp-content/uploads/2026/03/Vignette-replay-3-1024x1024.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none;border:none;margin:0;padding:0;"></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#c0392b;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">▶ REPLAY</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">26 mars 2026</div>
@@ -67,16 +85,13 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">La clinique des addictions revisitée</div>
 </div>
 </a>
-
 </div></div>
 
-<!-- ===== AVRIL 2026 ===== -->
-<div style="margin-bottom:35px;">
-<div style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Avril 2026</div>
-<div style="font-size:0;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
-
-<a href="https://www.afpbn.org/media/replay-webinar-de-la-section-psychiatrie-legale-les-3h-episode-2-lhybristophilie/" target="_blank" style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
-<div style="width:100%;padding-top:100%;position:relative;overflow:hidden;"><img src="https://www.afpbn.org/wp-content/uploads/2026/04/Vignette-replay-1024x1024.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"></div>
+<div class="month-block-pub" style="margin-bottom:35px;">
+<div class="month-header-pub" style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Avril 2026</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
+<a href="https://www.afpbn.org/media/replay-webinar-de-la-section-psychiatrie-legale-les-3h-episode-2-lhybristophilie/" target="_blank" class="card-pub" data-titre="Les 3 H : Hybristophilie" data-section="Section Psychiatrie Légale" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
+<div class="thumb-wrap" style="width:100%;padding-top:100%;position:relative;overflow:hidden;line-height:0;font-size:0;display:block;"><img src="https://www.afpbn.org/wp-content/uploads/2026/04/Vignette-replay-1024x1024.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none;border:none;margin:0;padding:0;"></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#c0392b;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">▶ REPLAY</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">16 avr. 2026</div>
@@ -84,43 +99,36 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Les 3 H : Hybristophilie</div>
 </div>
 </a>
-
 </div></div>
 
-<!-- ===== MAI 2026 ===== -->
-<div style="margin-bottom:35px;">
-<div style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Mai 2026</div>
-<div style="font-size:0;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
-
-<a href="https://www.afpbn.org/media/replay-webinar-des-sections-secs-medecine-psychosomatique-les-conduites-suicidaires-aux-frontieres-du-somatique/" target="_blank" style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
-<div style="width:100%;padding-top:100%;position:relative;overflow:hidden;"><img src="https://www.afpbn.org/wp-content/uploads/2026/04/Vignette-AFPBN.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"></div>
+<div class="month-block-pub" style="margin-bottom:35px;">
+<div class="month-header-pub" style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Mai 2026</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
+<a href="https://www.afpbn.org/media/replay-webinar-des-sections-secs-medecine-psychosomatique-les-conduites-suicidaires-aux-frontieres-du-somatique/" target="_blank" class="card-pub" data-titre="Les conduites suicidaires aux frontières du somatique" data-section="Sections SECS &amp; Médecine Psychosomatique" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
+<div class="thumb-wrap" style="width:100%;padding-top:100%;position:relative;overflow:hidden;line-height:0;font-size:0;display:block;"><img src="https://www.afpbn.org/wp-content/uploads/2026/04/Vignette-AFPBN.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none;border:none;margin:0;padding:0;"></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#c0392b;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">▶ REPLAY</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">21 mai 2026</div>
-<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections SECS &amp; Médecine Psychosomatique</div>
+<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections SECS & Médecine Psychosomatique</div>
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Les conduites suicidaires aux frontières du somatique</div>
 </div>
 </a>
-
-<a href="https://www.afpbn.org/media/replay-sections-secs-step-find-neurostimulation-dans-la-crise-suicidaire-de-limagerie-aux-interventions-therapeutiques/" target="_blank" style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
-<div style="width:100%;padding-top:100%;position:relative;overflow:hidden;"><img src="https://www.afpbn.org/wp-content/uploads/2026/04/Vignette-AFPBN-1.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"></div>
+<a href="https://www.afpbn.org/media/replay-sections-secs-step-find-neurostimulation-dans-la-crise-suicidaire-de-limagerie-aux-interventions-therapeutiques/" target="_blank" class="card-pub" data-titre="Neurostimulation dans la crise suicidaire : de l'imagerie aux interventions thérapeutiques" data-section="Sections SECS, STEP &amp; FIND" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
+<div class="thumb-wrap" style="width:100%;padding-top:100%;position:relative;overflow:hidden;line-height:0;font-size:0;display:block;"><img src="https://www.afpbn.org/wp-content/uploads/2026/04/Vignette-AFPBN-1.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none;border:none;margin:0;padding:0;"></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#c0392b;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">▶ REPLAY</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">28 mai 2026</div>
-<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections SECS, STEP &amp; FIND</div>
+<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections SECS, STEP & FIND</div>
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Neurostimulation dans la crise suicidaire : de l'imagerie aux interventions thérapeutiques</div>
 </div>
 </a>
-
 </div></div>
 
-<!-- ===== JUIN 2026 ===== -->
-<div style="margin-bottom:35px;">
-<div style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Juin 2026</div>
-<div style="font-size:0;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
-
-<a href="https://www.comtoevidence.com/evenement/132/" target="_blank" style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
-<div style="width:100%;padding-top:100%;position:relative;overflow:hidden;"><img src="https://www.afpbn.org/wp-content/uploads/2026/05/Vignette-AFPBN.png" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"></div>
+<div class="month-block-pub" style="margin-bottom:35px;">
+<div class="month-header-pub" style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Juin 2026</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
+<a href="https://www.comtoevidence.com/evenement/132/" target="_blank" class="card-pub" data-titre="Les Nouvelles Pratiques en Addictologie : Comment Switcher la Méthadone vers la Buprénorphine Injectable d'Action Prolongée ?" data-section="Section Addictions" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
+<div class="thumb-wrap" style="width:100%;padding-top:100%;position:relative;overflow:hidden;line-height:0;font-size:0;display:block;"><img src="https://www.afpbn.org/wp-content/uploads/2026/05/Vignette-AFPBN.png" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none;border:none;margin:0;padding:0;"></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#27ae60;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">✍ INSCRIPTION</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">16 juin 2026</div>
@@ -128,9 +136,8 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Les Nouvelles Pratiques en Addictologie : Comment Switcher la Méthadone vers la Buprénorphine Injectable d'Action Prolongée ?</div>
 </div>
 </a>
-
-<a href="https://app.livestorm.co/com-to-evidence/webinar-de-la-section-sopsy-recommandations?s=902052e8-ff86-4a45-a342-b1a10216e4d3" target="_blank" style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
-<div style="width:100%;padding-top:100%;position:relative;overflow:hidden;"><img src="https://www.afpbn.org/wp-content/uploads/2026/05/Vignette-AFPBN-1.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"></div>
+<a href="https://app.livestorm.co/com-to-evidence/webinar-de-la-section-sopsy-recommandations?s=902052e8-ff86-4a45-a342-b1a10216e4d3" target="_blank" class="card-pub" data-titre="Hypersomnolence résiduelle en psychiatrie : que faire et comment prendre en charge ?" data-section="Section SoPsy" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
+<div class="thumb-wrap" style="width:100%;padding-top:100%;position:relative;overflow:hidden;line-height:0;font-size:0;display:block;"><img src="https://www.afpbn.org/wp-content/uploads/2026/05/Vignette-AFPBN-1.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none;border:none;margin:0;padding:0;"></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#27ae60;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">✍ INSCRIPTION</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">18 juin 2026</div>
@@ -138,9 +145,8 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Hypersomnolence résiduelle en psychiatrie : que faire et comment prendre en charge ?</div>
 </div>
 </a>
-
-<a href="https://app.livestorm.co/com-to-evidence/webinar-de-la-section-epigenopsy-optimising-study-design-for-clinically-useful-peripheral-biomarker-discovery-in-psychiatry?s=14715a19-16d7-49c5-8ef6-eb529a4e25ff" target="_blank" style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
-<div style="width:100%;padding-top:100%;position:relative;overflow:hidden;"><img src="https://www.afpbn.org/wp-content/uploads/2026/05/Vignette-AFPBN.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"></div>
+<a href="https://app.livestorm.co/com-to-evidence/webinar-de-la-section-epigenopsy-optimising-study-design-for-clinically-useful-peripheral-biomarker-discovery-in-psychiatry?s=14715a19-16d7-49c5-8ef6-eb529a4e25ff" target="_blank" class="card-pub" data-titre="Optimising study design for clinically-useful peripheral biomarker discovery in psychiatry" data-section="Section Epigenopsy" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
+<div class="thumb-wrap" style="width:100%;padding-top:100%;position:relative;overflow:hidden;line-height:0;font-size:0;display:block;"><img src="https://www.afpbn.org/wp-content/uploads/2026/05/Vignette-AFPBN.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none;border:none;margin:0;padding:0;"></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#27ae60;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">✍ INSCRIPTION</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">24 juin 2026</div>
@@ -148,45 +154,39 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Optimising study design for clinically-useful peripheral biomarker discovery in psychiatry</div>
 </div>
 </a>
-
-<a href="https://app.livestorm.co/com-to-evidence/webinar-des-sections-secs-and-tdah-tdah-et-suicidalite-des-vulnerabilites-neurodeveloppementales-aux-mecanismes-de-crise?s=52fc67b1-48db-4bf2-a96b-167bd308424b" target="_blank" style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
-<div style="width:100%;padding-top:100%;position:relative;overflow:hidden;"><img src="https://www.afpbn.org/wp-content/uploads/2026/05/Vignette-AFPBN-2.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"></div>
+<a href="https://app.livestorm.co/com-to-evidence/webinar-des-sections-secs-and-tdah-tdah-et-suicidalite-des-vulnerabilites-neurodeveloppementales-aux-mecanismes-de-crise?s=52fc67b1-48db-4bf2-a96b-167bd308424b" target="_blank" class="card-pub" data-titre="TDAH et suicidalité : des vulnérabilités neurodéveloppementales aux mécanismes de crise" data-section="Sections SECS &amp; TDAH" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px">
+<div class="thumb-wrap" style="width:100%;padding-top:100%;position:relative;overflow:hidden;line-height:0;font-size:0;display:block;"><img src="https://www.afpbn.org/wp-content/uploads/2026/05/Vignette-AFPBN-2.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none;border:none;margin:0;padding:0;"></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#27ae60;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">✍ INSCRIPTION</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">29 juin 2026</div>
-<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections SECS &amp; TDAH</div>
+<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections SECS & TDAH</div>
 <div style="font-size:14px;font-weight:600;line-height:1.4;">TDAH et suicidalité : des vulnérabilités neurodéveloppementales aux mécanismes de crise</div>
 </div>
 </a>
-
 </div></div>
 
-<!-- ===== SEPTEMBRE 2026 ===== -->
-<div style="margin-bottom:35px;">
-<div style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Septembre 2026</div>
-<div style="font-size:0;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
-
-<div style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
+<div class="month-block-pub" style="margin-bottom:35px;">
+<div class="month-header-pub" style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Septembre 2026</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
+<div class="card-pub" data-titre="Titre à venir" data-section="Sections Epigenopsy &amp; Addictions" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
 <div style="width:100%;padding-top:100%;background:linear-gradient(135deg,#2b4a7a,#4a7ab5);position:relative;"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:40px;font-weight:bold;">03</span></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#7f8c8d;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">📅 À VENIR</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">3 sept. 2026</div>
-<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections Epigenopsy &amp; Addictions</div>
+<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections Epigenopsy & Addictions</div>
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Titre à venir</div>
 </div>
 </div>
-
-<div style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
+<div class="card-pub" data-titre="Le Sommeil en Addictologie" data-section="Sections SoPsy &amp; Addictions" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
 <div style="width:100%;padding-top:100%;background:linear-gradient(135deg,#2b4a7a,#4a7ab5);position:relative;"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:40px;font-weight:bold;">10</span></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#7f8c8d;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">📅 À VENIR</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">10 sept. 2026</div>
-<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections SoPsy &amp; Addictions</div>
+<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections SoPsy & Addictions</div>
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Le Sommeil en Addictologie</div>
 </div>
 </div>
-
-<div style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
+<div class="card-pub" data-titre="La médecine légale et les TNF" data-section="Section Neuropsychiatrie" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
 <div style="width:100%;padding-top:100%;background:linear-gradient(135deg,#2b4a7a,#4a7ab5);position:relative;"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:40px;font-weight:bold;">14</span></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#7f8c8d;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">📅 À VENIR</span>
@@ -195,8 +195,7 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">La médecine légale et les TNF</div>
 </div>
 </div>
-
-<div style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
+<div class="card-pub" data-titre="Les 3 H : Hébéphilie" data-section="Section Psychiatrie Légale" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
 <div style="width:100%;padding-top:100%;background:linear-gradient(135deg,#2b4a7a,#4a7ab5);position:relative;"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:40px;font-weight:bold;">21</span></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#7f8c8d;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">📅 À VENIR</span>
@@ -205,15 +204,12 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Les 3 H : Hébéphilie</div>
 </div>
 </div>
-
 </div></div>
 
-<!-- ===== OCTOBRE 2026 ===== -->
-<div style="margin-bottom:35px;">
-<div style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Octobre 2026</div>
-<div style="font-size:0;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
-
-<div style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
+<div class="month-block-pub" style="margin-bottom:35px;">
+<div class="month-header-pub" style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Octobre 2026</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
+<div class="card-pub" data-titre="Prégabaline : Gare à la Fusée" data-section="Section Addictions" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
 <div style="width:100%;padding-top:100%;background:linear-gradient(135deg,#2b4a7a,#4a7ab5);position:relative;"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:40px;font-weight:bold;">15</span></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#7f8c8d;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">📅 À VENIR</span>
@@ -222,8 +218,7 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Prégabaline : Gare à la Fusée</div>
 </div>
 </div>
-
-<div style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
+<div class="card-pub" data-titre="Hypersomnolence : entre trouble du sommeil et symptôme psychiatrique" data-section="Section SoPsy" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
 <div style="width:100%;padding-top:100%;background:linear-gradient(135deg,#2b4a7a,#4a7ab5);position:relative;"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:40px;font-weight:bold;">27</span></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#7f8c8d;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">📅 À VENIR</span>
@@ -232,25 +227,21 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Hypersomnolence : entre trouble du sommeil et symptôme psychiatrique</div>
 </div>
 </div>
-
-<div style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
+<div class="card-pub" data-titre="L'accès à l'innovation : exemples de la neuromodulation et de la pharmacologie" data-section="Sections NPP &amp; STEP" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
 <div style="width:100%;padding-top:100%;background:linear-gradient(135deg,#2b4a7a,#4a7ab5);position:relative;"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:40px;font-weight:bold;">29</span></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#7f8c8d;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">📅 À VENIR</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">29 oct. 2026</div>
-<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections NPP &amp; STEP</div>
+<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections NPP & STEP</div>
 <div style="font-size:14px;font-weight:600;line-height:1.4;">L'accès à l'innovation : exemples de la neuromodulation et de la pharmacologie</div>
 </div>
 </div>
-
 </div></div>
 
-<!-- ===== NOVEMBRE 2026 ===== -->
-<div style="margin-bottom:35px;">
-<div style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Novembre 2026</div>
-<div style="font-size:0;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
-
-<div style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
+<div class="month-block-pub" style="margin-bottom:35px;">
+<div class="month-header-pub" style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Novembre 2026</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
+<div class="card-pub" data-titre="Vie sociale affective dans la schizophrénie" data-section="AFPBN" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
 <div style="width:100%;padding-top:100%;background:linear-gradient(135deg,#2b4a7a,#4a7ab5);position:relative;"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:40px;font-weight:bold;">09</span></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#7f8c8d;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">📅 À VENIR</span>
@@ -259,35 +250,30 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Vie sociale affective dans la schizophrénie</div>
 </div>
 </div>
-
-<div style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
+<div class="card-pub" data-titre="Trouble bipolaire difficile à traiter" data-section="Sections SECS &amp; SoPsy" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
 <div style="width:100%;padding-top:100%;background:linear-gradient(135deg,#2b4a7a,#4a7ab5);position:relative;"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:40px;font-weight:bold;">30</span></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#7f8c8d;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">📅 À VENIR</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">30 nov. 2026</div>
-<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections SECS &amp; SoPsy</div>
+<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections SECS & SoPsy</div>
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Trouble bipolaire difficile à traiter</div>
 </div>
 </div>
-
 </div></div>
 
-<!-- ===== DÉCEMBRE 2026 ===== -->
-<div style="margin-bottom:35px;">
-<div style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Décembre 2026</div>
-<div style="font-size:0;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
-
-<div style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
+<div class="month-block-pub" style="margin-bottom:35px;">
+<div class="month-header-pub" style="background:#2b4a7a;color:#fff;padding:12px 20px;font-size:17px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:6px 6px 0 0;">Décembre 2026</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;padding:12px;background:#f0f4f9;border:1px solid #d5e0ef;border-top:none;border-radius:0 0 6px 6px;">
+<div class="card-pub" data-titre="TDAH de l'adulte" data-section="Sections TDAH &amp; NPP" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
 <div style="width:100%;padding-top:100%;background:linear-gradient(135deg,#2b4a7a,#4a7ab5);position:relative;"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:40px;font-weight:bold;">10</span></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#7f8c8d;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">📅 À VENIR</span>
 <div style="font-size:13px;font-weight:700;color:#c0792a;margin-bottom:4px;">10 déc. 2026</div>
-<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections TDAH &amp; NPP</div>
+<div style="font-size:12px;color:#888;font-style:italic;margin-bottom:6px;">Sections TDAH & NPP</div>
 <div style="font-size:14px;font-weight:600;line-height:1.4;">TDAH de l'adulte</div>
 </div>
 </div>
-
-<div style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
+<div class="card-pub" data-titre="Dépistage du SAS systématique en psychiatrie : pour ou contre ?" data-section="Section SoPsy" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
 <div style="width:100%;padding-top:100%;background:linear-gradient(135deg,#2b4a7a,#4a7ab5);position:relative;"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:40px;font-weight:bold;">17</span></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#7f8c8d;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">📅 À VENIR</span>
@@ -296,8 +282,7 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Dépistage du SAS systématique en psychiatrie : pour ou contre ?</div>
 </div>
 </div>
-
-<div style="display:inline-block;vertical-align:top;width:23%;margin:1%;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
+<div class="card-pub" data-titre="Stiff Person Syndrome et TNF" data-section="Section Neuropsychiatrie" style="display:block;width:calc(25% - 9px);min-width:150px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);text-decoration:none;color:inherit;font-size:13px;opacity:.7">
 <div style="width:100%;padding-top:100%;background:linear-gradient(135deg,#2b4a7a,#4a7ab5);position:relative;"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:40px;font-weight:bold;">21</span></div>
 <div style="padding:12px 14px 16px;">
 <span style="background:#7f8c8d;color:#fff;font-size:13px;font-weight:bold;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px;">📅 À VENIR</span>
@@ -306,10 +291,41 @@ body{font-family:Arial,sans-serif;background:#fff;color:#2c3e50;padding:20px 15p
 <div style="font-size:14px;font-weight:600;line-height:1.4;">Stiff Person Syndrome et TNF</div>
 </div>
 </div>
-
 </div></div>
 
 </div>
 <!-- FIN CALENDRIER WEBINARS AFPBN 2026 -->
+
+<div id="noResults" class="no-results">Aucun webinar ne correspond à votre recherche.</div>
+
+<script>
+function applyFilters(){
+  const q=document.getElementById("filterSearch").value.toLowerCase().trim();
+  const mois=document.getElementById("filterMois").value;
+  const section=document.getElementById("filterSection").value.toLowerCase();
+  let total=0;
+  document.querySelectorAll(".month-block-pub").forEach(function(block){
+    const titre=block.querySelector(".month-header-pub").textContent;
+    if(mois&&titre!==mois){block.style.display="none";return;}
+    let visible=false;
+    block.querySelectorAll(".card-pub").forEach(function(card){
+      const t=(card.dataset.titre||"").toLowerCase();
+      const s=(card.dataset.section||"").toLowerCase();
+      const secMatch=!section||s.split(/[&,]/).some(p=>p.trim().replace(/^sections?s+/i,"section ").includes(section));
+      if((!q||(t.includes(q)||s.includes(q)))&&secMatch){
+        card.style.display="";visible=true;total++;
+      } else card.style.display="none";
+    });
+    block.style.display=visible?"":"none";
+  });
+  document.getElementById("noResults").style.display=total===0?"block":"none";
+}
+function resetFilters(){
+  document.getElementById("filterSearch").value="";
+  document.getElementById("filterMois").value="";
+  document.getElementById("filterSection").value="";
+  applyFilters();
+}
+</script>
 </body>
 </html>
